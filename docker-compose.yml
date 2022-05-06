@@ -1,0 +1,5 @@
+version: '2'
+
+services:
+  adminer:
+    image: docker.io/bitnami/adminer:4.8.1
