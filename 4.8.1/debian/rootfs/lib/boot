@@ -1,0 +1,2 @@
+php-fpm -c ${php_layer_dir}/etc/php.ini -y ${php_layer_dir}/etc/php-fpm.conf -p ${php_layer_dir}
+nginx

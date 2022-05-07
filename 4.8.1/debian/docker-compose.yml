@@ -2,4 +2,12 @@ version: '2'
 
 services:
   adminer:
-    image: docker.io/bitnami/adminer:4.8.1
+    image: registry.drycc.cc/drycc-addons/adminer:4.8.1
+    environment:
+      - ADMINER_DESIGN=hydra
+      - VOUCH_DOMAINS=yourdomain.com
+      - OAUTH_PROVIDER=google 
+      - OAUTH_CLIENT_ID=1234 
+      - OAUTH_CLIENT_SECRET=secretsecret
+      - OAUTH_CALLBACK_URL=https://vouch.yourdomain.com/auth
+
