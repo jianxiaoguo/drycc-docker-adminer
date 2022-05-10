@@ -1,2 +1,3 @@
+nohup vouch-proxy > /opt/drycc/vouch-proxy/vouch-proxy.log 2>&1 &
 php-fpm -c ${php_layer_dir}/etc/php.ini -y ${php_layer_dir}/etc/php-fpm.conf -p ${php_layer_dir}
 nginx

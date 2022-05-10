@@ -3,11 +3,30 @@ version: '2'
 services:
   adminer:
     image: registry.drycc.cc/drycc-addons/adminer:4.8.1
+    ports:
+      - 8081:80
+      - 9090:9090
     environment:
+      # adminer ui
       - ADMINER_DESIGN=hydra
-      - VOUCH_DOMAINS=yourdomain.com
-      - OAUTH_PROVIDER=google 
-      - OAUTH_CLIENT_ID=1234 
-      - OAUTH_CLIENT_SECRET=secretsecret
-      - OAUTH_CALLBACK_URL=https://vouch.yourdomain.com/auth
-
+      # all allow domains include email
+      # vouch-nginx.domain.com -> ip:8081
+      - VOUCH_DOMAINS=ip,ip:8081,vouch-nginx.domain.com,email.com
+      - OAUTH_PROVIDER=oidc
+      - OAUTH_CLIENT_ID=client_id
+      - OAUTH_CLIENT_SECRET=client_secret
+      - OAUTH_AUTH_URL=http://passport.domain.com/oauth/authorize/
+      - OAUTH_TOKEN_URL=http://passport.domain.com/oauth/token/
+      - OAUTH_USER_INFO_URL=http://passport.domain.com/oauth/userinfo/
+      # passport admin callback set
+      - OAUTH_CALLBACK_URL=http://vouch-nginx.domain.com/auth
+      - OAUTH_CALLBACK_URLS=http://vouch-nginx.domain.com/auth
+      - OAUTH_SCOPES=openid
+      - OAUTH_END_SESSION_ENDPOINT=
+      - OAUTH_USER_TEAM_URL=
+      - OAUTH_USER_ORG_URL=
+      - OAUTH_PREFERREDDOMAIN=
+      - OAUTH_SCOPES=
+      - OAUTH_CLAIMS=
+      - OAUTH_CODE_CHALLENGE_METHOD=
+      - OAUTH_RELYING_PARTY_ID=
